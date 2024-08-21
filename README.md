@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <locale.h>
+
 	int main (){
 	setlocale(LC_ALL,"");
 	system("color f9");	
