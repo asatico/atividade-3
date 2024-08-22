@@ -37,7 +37,7 @@ int main() {
         	printf("Número invalido. Por favor digite um número positivo. \n");
 		}
 
-	} while(n1 <= 0);
+	} while(n2 <= 0);
 	
 	// resutado e calculo do mdc
 	system("cls");
