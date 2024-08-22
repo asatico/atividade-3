@@ -10,7 +10,7 @@ int main (){
 	unsigned long long int proximo = primeiro + segundo;
 	
 	int n,i;
-	printf("Digite o primeiro numero da fequencia de Fibonacci: ");
+	printf("Digite o primeiro número da fequencia de Fibonacci: ");
 	scanf("%d",&n); 	
 	
 	if(n <= 0) {
