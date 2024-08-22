@@ -1,0 +1,32 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+int e_palindro(int numero){
+	int original = numero;
+	int invertido = 0;
+	int digito;
+	
+	while (numero > 0){
+		digito = numero % 10;
+		invertido = invertido *10 + digito;
+		numero /= 10;			
+	}
+	return original == invertido;
+}
+int main() {
+	setlocale(LC_ALL,"");
+	system("color f9");
+	
+	int numero;
+	
+	printf("Digite um número: ");
+	scanf("%d",&numero);	
+	
+	if(e_palindro(numero)){
+		printf("%d é um palíndro. \n", numero);
+	}else {
+		printf("%d não e um palíndro. \n", numero);
+	}	
+return 0;
+}
