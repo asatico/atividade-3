@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+int main (){
+	setlocale(LC_ALL,"");
+	system ("color f9");
+	
+	unsigned long long int primeiro = 0, segundo =1;
+	unsigned long long int proximo = primeiro + segundo;
+	
+	int n,i;
+	printf("Digite o primeiro numero da fequencia de Fibonacci: ");
+	scanf("%d",&n); 	
+	
+	if(n <= 0) {
+		printf("O número deve ser maior que zero. \n");
+		return 1;
+	}
+	
+	//Exibe os termos da sequencia de Fibonacci.
+	
+	for (i = 0; i < n; i++){
+		if(i == 0){
+			printf("%llu ", primeiro);
+		}else if (i == 1){
+			printf("%llu", segundo);
+		}else{
+			primeiro = segundo;
+			segundo = proximo;
+			printf("%llu ",proximo);
+		}
+    }
+		
+		
+	printf("\n");
+    return 0;		
+	}
