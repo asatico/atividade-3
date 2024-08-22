@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+int  main (){
+	setlocale(LC_ALL,"");
+	system("color f9");
+	
+	int n, soma;
+	printf("Digite o valor de n: ");
+	scanf("%d",&n);
+	
+	
+	if (n < 0){
+		printf("N deve ser um número natural (nao negativo). \n");
+		return 1;
+	}
+	
+	//fazer a soma de "N".
+	soma = n * (n + 1) /2;
+	printf("A soma dos primeiros %d números naturais é %d. \n",n,soma);
+	
+	return 0;
+}
