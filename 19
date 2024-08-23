@@ -1,0 +1,38 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+
+int numeroperfeito(int num){
+	int soma = 0;
+	int i;
+	for(i = 1; i <= num / 2; i++ ){
+		if(num % i == 0 ){
+			soma += i;			
+		}
+	}
+	return soma == num;
+}
+int main(){
+	setlocale(LC_ALL,");
+	system ("color f9");
+	
+	int num;
+	do{
+		printf("Digite um número:");
+		scanf("%d",&num);
+		
+		if(num <= 0){
+			system("cls");
+			printf("O número deve ser  positivo. \n");
+		}
+	}while (num <= 0);
+	do{
+		if(numeroperfeito(num)){
+			printf("%d é um número perfeito. \n",num);
+		}else{
+			printf("%d não é um número perfeito. \n",num);
+		}
+	}while (num <= 0);
+	return 0;
+}
