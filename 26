@@ -1,0 +1,70 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+
+#define max_linhas 100
+#define max_colunas 100
+
+void Matriz(int matriz[max_linhas][max_colunas],int linhas, int colunas){
+    printf("Digite os elementos da matriz (%d linhas x %d colunas): \n",linhas, colunas);
+    for (int i = 0; i < linhas; i++){
+        for (int j = 0; j < colunas; j++){
+            printf("Elemento [%d][%d]: ",i,j);
+            scanf("%d",&matriz[i][j]);
+        }   
+    }
+}
+void exibirmatriz(int matriz[max_linhas][max_colunas], int linhas, int colunas){ 
+    printf("Matriz (%d linhas x %d colunas): \n",linhas,colunas);
+    for (int i = 0; i < linhas; i++){
+        for (int j = 0; j < colunas; j++){
+            printf("%4d", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+void somarmatriz(int matriz1[max_linhas][max_colunas], int matriz2[max_linhas][max_colunas], int resultado[max_linhas][max_colunas], int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++){
+        for (int j = 0; j < colunas; j++){
+            resultado[i][j]= matriz1[i][j] + matriz2[i][j];
+        } 
+    }  
+}
+int main (){
+    int linhas,colunas;
+    int matriz1[max_linhas][max_colunas];
+    int matriz2[max_linhas][max_colunas];
+    int resultado[max_linhas][max_colunas];
+    system("chacp 65001");
+    system("color f9");
+    setlocale(LC_ALL,"portuguse");
+    system("cls");
+
+    printf("Digite o numero de linhas e de colunas da matriz:");
+    scanf("%d %d",&linhas, &colunas);
+
+    if (linhas > max_linhas || colunas > max_colunas){
+        printf("Número de linhas ou de colunas exede o limite máximo. \n");
+        return 1;
+    }
+
+    printf("Digite a primeira matriz:\n");
+    Matriz(matriz1, linhas, colunas);
+
+    printf("Digite a segunda matriz:\n");
+    Matriz(matriz2, linhas, colunas);
+
+    somarmatriz(matriz1, matriz2, resultado, linhas, colunas);
+
+    printf("Primeira matriz:\n");
+    exibirmatriz(matriz1, linhas, colunas);
+
+    printf("Segunda matriz:\n");
+    exibirmatriz(matriz2, linhas, colunas);
+
+    printf("Resultado da soma das duas matrizes:\n");
+    exibirmatriz(resultado, linhas, colunas);
+
+    return 0;
+}
