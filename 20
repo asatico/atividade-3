@@ -1,0 +1,42 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+void ordenacao(int arr[], int n){
+    int i, j, temp;
+    for (i = 0;  i < n - 1; i++){
+      for (j = 0; j < n - i - 1; j++){  
+        //trocar o elemento encontrado é maior que o prómixo elemento
+        if(arr[j] > arr[j + 1]){
+            temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+      }
+    }
+ }
+ // Função para  imprimir o vetor
+ void print(int arr[], int size){
+    int i;
+    for(  i = 0; i < size; i++){
+        printf("%d",arr[i]);
+        printf("\n");
+    }
+ } 
+int main(){
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n= sizeof(arr)/sizeof(arr[0]);
+    system("color f9");
+	system("chcp 65001");
+    setlocale(LC_ALL,"portuguse");
+
+    printf("Vetor original: \n");
+    print(arr,n);
+
+    ordenacao(arr,n);
+    
+
+    printf("Vetor ordenado: \n");
+    print(arr,n);
+    return 0;
+}
