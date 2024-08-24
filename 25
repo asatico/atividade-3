@@ -1,0 +1,48 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+#include <string.h>
+
+#define max_bits 32 // Superte para números de até 32 bits.
+
+void db(int decimal,char * binario){
+    int index = 0;
+    if (decimal == 0){
+        binario[index++]= '0';  
+    }else{
+        while (decimal > 0){
+            binario[index++] = (decimal % 2 ) ? '1': '0';
+            decimal /= 2;
+        }
+    }
+    binario[index] = '\0';
+
+    int inicio = 0;
+    int fim = index - 1;
+    while (inicio < fim){
+        char temp = binario[inicio];
+        binario[inicio] = binario[fim];
+        binario[fim] = temp;
+        inicio++;
+        fim--;
+    }
+}
+int main(){
+    int decimal;
+    char binario[max_bits + 1];
+    system("chcp 65001");
+    system("cls");
+    system("color f9");
+    setlocale(LC_ALL,"portugues");
+
+    printf("Digite um  número decimal: ");
+    scanf("%d",&decimal);
+
+    if (decimal < 0){
+        printf("Insira um número decimal não negativo.");
+        return 1;
+    }
+    db(decimal, binario);   
+    printf("O número decimal %d em binário é: %s\n",decimal,binario);
+}
