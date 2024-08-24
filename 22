@@ -1,0 +1,57 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+int Binaria(int arr[], int n, int chave){
+    int esquerda = 0;
+    int direita = n - 1;
+    int meio;
+    while (esquerda <= direita){
+        meio = esquerda + (direita - esquerda)/2; //calcula o meio do vetor.
+        if (arr[meio]== chave){
+            return meio;
+        }if (arr[meio]< chave){
+            esquerda = meio + 1;
+        }else{
+            direita = meio - 1;
+        }
+    }
+    return -1;
+}
+void print(int arr[], int size) {
+    int i;
+    for (i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+int main (){
+    int n,chave, resultado;
+    int arr[n];
+    system("chcp 65001");
+    system("color f9"); 
+    setlocale(LC_ALL,"portuguse");
+
+    printf("Digite o tamanho do vetor (deve set odernado): ");
+    scanf("%d",&n);
+
+    printf("Digite  elementos para o vetor (ordenados em ordem crescente): ");
+    for (int i = 0; i < n; i++){
+        printf("Elemento %d", i + 1);
+        scanf("%d",&arr[i]);
+    }
+    printf("Digite o valo a set buscado:");
+    scanf("%d",&chave);
+
+    printf("Vetor: \n");
+    print(arr,n);
+
+    // realiza a busca binária.
+    resultado = Binaria(arr,n,chave);
+
+    if (resultado != -1){
+        printf("Elemento %d encontrado no indice %d. \n",chave,resultado);
+    }else{
+        printf("Elemento %d não encontrado no índice. \n ",chave);
+    }
+    return 0;
+}
