@@ -1,0 +1,46 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+#include <time.h>
+
+int main(){
+    int numeros,palpite;
+    int tentativas = 0;
+    int maxtentativas = 10; // número maximo de tentativas.
+    setlocale(LC_ALL,"portugues");
+    system("chcp 65001");
+    system("color f9");
+
+    // inicia o gerador de numeros
+    srand(time(NULL));
+
+    numeros = rand() % maxtentativas + 1;
+system("cls");
+ printf("Bem vido ao jogo do adivinhao o número\n");
+ printf("Tente adivinhar o número secreto. \n");
+
+ while (tentativas < maxtentativas){
+    printf("Tentativas %d de %d: ", tentativas +1, maxtentativas);
+    scanf("%d",&palpite);
+    if (palpite < 1|| palpite > maxtentativas){
+        printf("Escolha um número entre 1 e %d.\n", maxtentativas);
+        continue;
+    }
+    tentativas ++;
+
+    if (palpite < numeros) {
+            printf("O número secreto é maior que %d.\n", palpite);
+        } else if (palpite > numeros) {
+            printf("O número secreto é menor que %d.\n", palpite);
+        } else {
+            system("cls");
+            printf("Parabéns! Você adivinhou o número secreto %d em %d tentativas.\n", numeros, tentativas);
+            break;}
+    if (tentativas == maxtentativas && palpite != numeros){
+        system("cls");
+        printf("Você não conseguiu adivinhar o número secreto. Era %d.\n", numeros);
+    }
+ }
+    return 0;
+}
