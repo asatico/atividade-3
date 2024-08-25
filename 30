@@ -1,0 +1,51 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+#include <ctype.h>
+
+int string(const char *str){
+    int resultado = 0;
+    int sing = 1;
+
+    if (str == NULL){
+        return 0;
+    }
+    while (*str == ' '){
+        str++;
+    }
+    
+    if (*str == '_'){
+        sing = -1;
+        str ++;
+    }else if (*str == '+'){
+        str++;
+    }
+    
+    while (*str){
+        if (isdigit(*str)) {
+            resultado = resultado * 10 + (*str - '0');
+            str++;
+        }else{
+            break;
+        } 
+    }
+    return sing * resultado;
+}
+
+int main(){
+    char str[100];
+    system("chcp 65001");
+    system("color f9");
+    setlocale(LC_ALL,"portuguse");
+    system("cls");
+
+    printf("Digite a string com um número inteiro: ");
+    fgets(str, sizeof(str), stdin);
+
+    int numero = string(str);
+
+    printf("Número  convertido: %d \n");
+    
+    return 0;
+}
