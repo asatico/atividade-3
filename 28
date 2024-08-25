@@ -1,0 +1,32 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+// Funçao para calcular o  determinante da matriz.
+int calculomatriz(int a,int b, int c, int d){
+    return(a * d) - (b * c);
+}
+int main (){
+    int a,b,c,d;
+    system("chcp 65001");
+    system("color f9");
+    setlocale(LC_ALL,"portuguse");
+    system("cls");
+
+    printf("Digite os elementos da matriz 2x2: \n");
+    printf("Elemento a:");
+    scanf("%d",&a); 
+    printf("Elemento b:");
+    scanf("%d",&b);
+    printf("Elemento c:");
+    scanf("%d",&c);
+    printf("Elemento d:");
+    scanf("%d",&d);
+
+    //Calcula o derteminante.
+    int derteminate = calculomatriz(a,b,c,d);
+
+    printf("O derteminante da matriz é: %d \n", derteminate);
+
+    return 0;
+}
