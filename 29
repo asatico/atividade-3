@@ -1,0 +1,36 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <unistd.h>
+#include <locale.h>
+#include <ctype.h>
+
+int valores(const char *str){
+    int count = 0;
+    char ch;
+
+    while ((ch = *str++)){
+        ch = tolower(ch);
+
+        if (ch == 'a'|| ch == 'e'|| ch == 'i'|| ch == 'o'|| ch == 'u'){
+            count++;
+        }
+        
+    }
+    return count;
+}
+int main(){
+    char str[100];
+    system("chcp 65001");
+    system("color f9");
+    setlocale(LC_ALL,"portuguse");
+    system("cls");
+
+    printf("Digite uma palavra: ");
+    fgets(str, sizeof(str),stdin);
+
+    int cont = valores(str);
+
+    printf("Número de vogais na palavra: %d\n", cont);
+
+    return 0;
+}
